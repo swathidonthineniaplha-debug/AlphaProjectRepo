@@ -1,0 +1,21 @@
+trigger:
+- main
+
+pool:
+  name: bluelabelhost
+
+steps:
+
+- script: |
+    echo "Pipeline Started"
+    hostname
+    pwd
+  displayName: "Check VM"
+
+- script: |
+    sudo cp $(Build.SourcesDirectory)/projectOne/index.html /var/www/html/index.html
+  displayName: "Deploy Website"
+
+- script: |
+    echo "Deployment Successful"
+  displayName: "Done"
